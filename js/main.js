@@ -1,6 +1,9 @@
 var cropper;
 
+/* Add the selected part as a snippet. */
 function addSnippet(e) {
+  $("#btn-register-annotation").show();
+
   data = {
       method: e.getAttribute('data-method'),
       target: e.getAttribute('data-target'),
@@ -18,7 +21,29 @@ function addSnippet(e) {
   $(result).attr("data-width", cropped_data["width"])
   $(result).attr("data-height", cropped_data["height"])
 
-  $("#canvas-container").append(result);
+  var $div = $("<div>", {'class': "snippet form-inline"});
+  $div.append('<input class="form-control" placeholder="Field name">');
+  $div.append(result);
+
+  $("#canvas-container").append($div);
+}
+
+function registerAnnotation() {
+  var snippets = [];
+  $( "#canvas-container canvas" ).each(function( index ) {
+    console.log( index + ": " + $( this ).text() );
+
+    snippets.push({
+      'case': 0,  // TODO replace with parameter value
+      'x': $( this ).attr("data-x"),
+      'y': $( this ).attr("data-y"),
+      'width': $( this ).attr("data-width"),
+      'height': $( this ).attr("data-height")
+    });
+
+  });
+
+  firebase.database().ref("annotation").push(snippets);
 }
 
 window.onload = function () {

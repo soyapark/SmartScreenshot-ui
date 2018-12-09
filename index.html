@@ -39,7 +39,7 @@
       <div class="col-md-9">
         <!-- <h3>Demo:</h3> -->
         <div class="img-container">
-          <img src="images/standard_01.jpeg" alt="Picture">
+          <img src="images/standard_0.jpeg" alt="Picture">
         </div>
       </div>
       <div class="col-md-3">
@@ -113,13 +113,14 @@
           </div>
         </div>
 
-        <button id="btn-add-snippet" type="button" class="btn btn-primary" data-method="getCroppedCanvas" onclick="addSnippet(this)">
+        <button id="btn-add-snippet" type="button" class="btn btn-default" data-method="getCroppedCanvas" onclick="addSnippet(this)">
             Add this snippet
         </button>
       </div>
     </div>
     <div class="row" id="actions">
       <div id="canvas-container"></div>
+      
       <div class="col-md-9 docs-buttons" style="display: none;">
         <!-- <h3>Toolbar:</h3> -->
         <div class="btn-group">
@@ -344,12 +345,28 @@
       </div><!-- /.docs-buttons -->
 
     </div>
+
+    <div class="row">
+      <button id="btn-register-annotation" type="button" class="btn btn-primary" data-method="getCroppedCanvas" onclick="registerAnnotation()" style="display:none;">
+            Register annotation
+        </button>
+    </div>
+
+    <p class="heart"></p>
+
+    <div class="row">
+      <div class="col-md-8">
+        <img src='images/seg_01.png' style=" width: 100%;"/>
+      </div>
+      <div class="col-md-4">
+        field1: blah blah
+      </div>
+    </div>
   </div>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p class="heart"></p>
       <nav class="nav flex-wrap justify-content-center mb-3">
         <a class="nav-link" href="http://6.869.csail.mit.edu/fa18/">About</a>
       </nav>

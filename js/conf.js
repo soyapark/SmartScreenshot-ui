@@ -11,26 +11,13 @@ function initDB() {
     app = firebase.initializeApp(config);
 }
 
-/* Add the selected part as a snippet. */
-function addSnippet() {
-	// add canvas for preview
-	
-}
+
 
 $(function() {
     initDB();
 
-	var starCountRef = firebase.database().ref('posts/');
+	var starCountRef = firebase.database().ref('results/');
 	starCountRef.on('value', function(snapshot) {
 	  var val = snapshot.val();
 	});
-
-	firebase.database().ref().push({
-		'x': 0,
-		'y': 0,
-		'width': 0,
-		'height': 0
-	})
-
-
 });

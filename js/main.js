@@ -1,4 +1,14 @@
 var cropper;
+var ready = false;
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
 
 /* Add the selected part as a snippet. */
 function addSnippet(e) {
@@ -13,7 +23,7 @@ function addSnippet(e) {
 
   var result;
   result = cropper[data.method](data.option, data.secondOption);
-
+  debugger;
   cropped_data = cropper.getData()
 
   $(result).attr("data-x", cropped_data["x"])
@@ -34,7 +44,7 @@ function registerAnnotation() {
     console.log( index + ": " + $( this ).text() );
 
     snippets.push({
-      'case': 0,  // TODO replace with parameter value
+      'case': getUrlVars()['case'] || 0,  // TODO replace with parameter value
       'x': $( this ).attr("data-x"),
       'y': $( this ).attr("data-y"),
       'width': $( this ).attr("data-width"),
@@ -44,6 +54,7 @@ function registerAnnotation() {
   });
 
   firebase.database().ref("annotation").push(snippets);
+   ready = true;
 }
 
 window.onload = function () {

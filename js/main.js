@@ -32,7 +32,7 @@ function addSnippet(e) {
   $(result).attr("data-height", cropped_data["height"])
 
   var $div = $("<div>", {'class': "snippet form-inline"});
-  $div.append('<input class="form-control" placeholder="Field name">');
+  $div.append('<input class="form-control" placeholder="Field name (Optional)">');
   $div.append(result);
 
   $("#canvas-container").append($div);
@@ -44,11 +44,12 @@ function registerAnnotation() {
     console.log( index + ": " + $( this ).text() );
 
     snippets.push({
-      'case': getUrlVars()['case'] || 0,  // TODO replace with parameter value
+      'case': getUrlVars()['case'] || 0,  
       'x': $( this ).attr("data-x"),
       'y': $( this ).attr("data-y"),
       'width': $( this ).attr("data-width"),
-      'height': $( this ).attr("data-height")
+      'height': $( this ).attr("data-height"),
+      'name': $($(".snippet")[index]).find('input').val()
     });
 
   });

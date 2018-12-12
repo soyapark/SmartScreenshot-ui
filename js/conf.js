@@ -36,6 +36,7 @@ $(function() {
 	var starCountRef = firebase.database().ref('result/');
 	starCountRef.on('child_added', function(snapshot) {
 		if(!ready) return;
+
 	  var val = snapshot.val();
 	  console.log(val);
 	  var index = 0;

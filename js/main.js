@@ -1,5 +1,6 @@
 var cropper;
 var ready = false;
+var instance_id = 0;
 
 function getUrlVars() {
     var vars = {};
@@ -43,13 +44,15 @@ function registerAnnotation() {
   $( "#canvas-container canvas" ).each(function( index ) {
     console.log( index + ": " + $( this ).text() );
 
+    instance_id = Math.floor(Math.random()*90000) + 10000
     snippets.push({
       'case': getUrlVars()['case'] || 0,  
       'x': $( this ).attr("data-x"),
       'y': $( this ).attr("data-y"),
       'width': $( this ).attr("data-width"),
       'height': $( this ).attr("data-height"),
-      'name': $($(".snippet")[index]).find('input').val()
+      'name': $($(".snippet")[index]).find('input').val(),
+      'id': instance_id
     });
 
   });

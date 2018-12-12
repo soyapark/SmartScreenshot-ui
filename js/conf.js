@@ -38,6 +38,9 @@ $(function() {
 		if(!ready) return;
 
 	  var val = snapshot.val();
+
+	  if(val['id'] != instance_id) return;
+	  
 	  console.log(val);
 	  var index = 0;
 
